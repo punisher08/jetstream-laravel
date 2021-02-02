@@ -5,8 +5,14 @@ namespace App\Http\Controllers;
 use App\Models\Task;
 use Illuminate\Http\Request;
 
+
 class TaskController extends Controller
 {
+   
+     
+    public function createTask(){
+        return view('tasks.create');
+    }
     /**
      * Display a listing of the resource.
      *
@@ -16,6 +22,7 @@ class TaskController extends Controller
     {
         //
         $tasks = Task::all();
+       
         return view('tasks.index',compact('tasks'));
     }
 
@@ -31,6 +38,8 @@ class TaskController extends Controller
         return view('task.create',['layout'=>'create']);
     }
 
+
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,6 +52,8 @@ class TaskController extends Controller
        $task = new Task();
        $task->title = $request->input('title');
        $task->description = $request->input('description');
+       $task->status = $request->input('status');
+       $task->assigned_to = $request->input('assigned_to');
        $task->save();
       
        return redirect('tasks');
@@ -86,6 +97,8 @@ class TaskController extends Controller
         $task = Task::find($id);
         $task->title = $request->input('title');
         $task->description = $request->input('description');
+        $task->status = $request->input('status');
+        $task->assigned_to = $request->input('assigned_to');
         $task->save();
         return redirect('tasks');
     }

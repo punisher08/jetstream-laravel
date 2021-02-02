@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateTasksTable extends Migration
+class AddSetDefaultPagesToPagesTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,13 +13,10 @@ class CreateTasksTable extends Migration
      */
     public function up()
     {
-        Schema::create('tasks', function (Blueprint $table) {
-            $table->id();
-            $table->string('title');
-            $table->string('description');
-            $table->boolean('status');
-            $table->string('assigned_to');
-            $table->timestamps();
+        Schema::table('pages', function (Blueprint $table) {
+            $table->boolean('is_default_home')->nullable()->after('id');
+            $table->boolean('is_default_not_found')->nullable()->after('is_default_home');
+
         });
     }
 
@@ -30,6 +27,8 @@ class CreateTasksTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('tasks');
+        Schema::table('pages', function (Blueprint $table) {
+            //
+        });
     }
 }
