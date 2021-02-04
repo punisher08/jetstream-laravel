@@ -43,6 +43,10 @@ Route::group(['middleware' => [
             return view('admin.page');
         })->name('pages');
 
+        Route::get('/navigation-menus', function(){
+            return view('admin.navigation-menus');
+        })->name('navigation-menus');
+
         Route::get('/tasks','TaskController@index');
         Route::get('/create','TaskController@createTask');
         Route::post('/store','TaskController@store');

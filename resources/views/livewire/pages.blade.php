@@ -51,7 +51,8 @@
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap">
                                 <span class="px-2 inline-flex text-xs leading-5 font-semibold rounded-full">
-                                    {!! $item-> content !!}
+                                    {{-- {!! $item-> content !!} --}}
+                                    {!! \Illuminate\Support\Str::limit($item->content,50)!!}
                                 </span>
                                 </td>
                                 <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">

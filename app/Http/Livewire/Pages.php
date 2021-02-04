@@ -160,7 +160,7 @@ class Pages extends Component
      */
     public function read()
     {
-        return Page::paginate(3);
+        return Page::paginate(5);
     }    
 
 
